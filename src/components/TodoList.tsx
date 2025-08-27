@@ -1,24 +1,43 @@
 import { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoItem from "./TodoItem";
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import type { Todo } from "../types";
 
 let nextId = 1;
 
 export default function TodoList() {
   const [todos, setTodos] = useState<Todo[]>([
-    { id: nextId++, text: "Att göra 1", completed: false },
-    { id: nextId++, text: "Att göra 2", completed: false },
-    { id: nextId++, text: "Att göra 3", completed: false },
+    {
+      id: nextId++,
+      text: "Att göra 1",
+      completed: false,
+      createdAt: new Date(),
+      author: "Användare 1",
+    },
+    {
+      id: nextId++,
+      text: "Att göra 2",
+      completed: false,
+      createdAt: new Date(),
+      author: "Användare 2",
+    },
+    {
+      id: nextId++,
+      text: "Att göra 3",
+      completed: false,
+      createdAt: new Date(),
+      author: "Användare 3",
+    },
   ]);
 
-  const addTodo = (text: string) => {
-    const newTodo: Todo = { id: nextId++, text, completed: false };
+  const addTodo = (text: string, author: string) => {
+    const newTodo: Todo = {
+      id: nextId++,
+      text,
+      completed: false,
+      createdAt: new Date(),
+      author,
+    };
     setTodos([...todos, newTodo]);
   };
 
@@ -33,7 +52,6 @@ export default function TodoList() {
       )
     );
   };
-
 
   return (
     <div>

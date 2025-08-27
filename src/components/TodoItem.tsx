@@ -1,8 +1,4 @@
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import type { Todo } from "../types";
 
 interface TodoItemProps {
   todo: Todo;
@@ -18,7 +14,9 @@ export default function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
         marginBottom: "8px",
       }}
     >
-      {todo.text}
+      <p>{todo.text}</p>
+      <p>{todo.author}</p>
+      <small>{todo.createdAt.toLocaleString()}</small>
       <button style={{ marginLeft: "10px" }} onClick={onToggle}>
         {todo.completed ? "Undo" : "Complete"}
       </button>
