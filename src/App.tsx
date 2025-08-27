@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useState } from "react";
+import TodoList from "./components/TodoList";
 import "./css/app.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
+      <div className="app">
         <h1>React Todo List</h1>
+        <TodoList />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
