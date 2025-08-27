@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoItem from "./TodoItem";
 import type { Todo } from "../types";
+import "../css/todolist.css";
 
 let nextId = 1;
 
@@ -54,8 +55,8 @@ export default function TodoList() {
   };
 
   return (
-    <div>
-      <h2>My Todo List</h2>
+    <div className="todo-list-container">
+      <h1>My Todo List</h1>
       <AddTodoForm onAdd={addTodo} />
       <ul>
         {todos.map((todo) => (

@@ -1,0 +1,20 @@
+.todo-list-container {
+  max-width: 90%;
+  margin: 100px auto 40px auto; /* top | right | bottom | left */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffe6e6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list-container ul {
+  margin-top: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list-container ul li {
+  border-top: 1px solid #000;
+  padding: 8px 0;
+}
+

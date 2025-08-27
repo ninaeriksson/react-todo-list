@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../css/addtodoform.css";
+
 
 interface AddTodoFormProps {
   onAdd: (text: string, author: string) => void;
@@ -17,7 +19,7 @@ export default function AddTodoForm({ onAdd }: AddTodoFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add-todo-form">
       <input
         type="text"
         value={text}
