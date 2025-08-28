@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../css/addtodoform.css";
 
-
 interface AddTodoFormProps {
   onAdd: (text: string, author: string) => void;
 }

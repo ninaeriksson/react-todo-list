@@ -54,6 +54,12 @@ export default function TodoList() {
     );
   };
 
+  const editTodo = (id: number, newText: string) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
+    );
+  };
+
   return (
     <div className="todo-list-container">
       <h1>My Todo List</h1>
@@ -65,6 +71,7 @@ export default function TodoList() {
             todo={todo}
             onToggle={() => toggleComplete(todo.id)}
             onRemove={() => removeTodo(todo.id)}
+            onEdit={(newText) => editTodo(todo.id, newText)}
           />
         ))}
       </ul>
