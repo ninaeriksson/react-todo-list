@@ -1,5 +1,7 @@
 import type { Todo } from "../types";
 import { useState } from "react";
+import upArrow from "../assets/arrow_up.png";
+import downArrow from "../assets/arrow_down.png";
 import "../css/todoitem.css";
 
 interface TodoItemProps {
@@ -7,6 +9,8 @@ interface TodoItemProps {
   onToggle: () => void;
   onRemove: () => void;
   onEdit: (newText: string) => void;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
 }
 
 export default function TodoItem({
@@ -14,6 +18,8 @@ export default function TodoItem({
   onToggle,
   onRemove,
   onEdit,
+  onMoveUp,
+  onMoveDown,
 }: TodoItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(todo.text);
@@ -51,9 +57,9 @@ export default function TodoItem({
         </>
       ) : (
         <>
-          <p>{todo.text}</p>
-          <p>{todo.author}</p>
-          <small>{todo.createdAt.toLocaleString()}</small>
+          <p className="todo-text">{todo.text}</p>
+          <p className="todo-author">{todo.author}</p>
+          <small className="todo-date">{todo.createdAt.toLocaleString()}</small>
           <button style={{ marginLeft: "10px" }} onClick={onToggle}>
             {todo.completed ? "Undo" : "Complete"}
           </button>
@@ -65,6 +71,20 @@ export default function TodoItem({
           </button>
           <button style={{ marginLeft: "10px" }} onClick={onRemove}>
             Remove
+          </button>
+          <button style={{ marginLeft: "10px" }} onClick={onMoveUp}>
+            <img
+              src={upArrow}
+              alt="Move Up"
+              style={{ width: "16px", height: "12px" }}
+            />
+          </button>
+          <button style={{ marginLeft: "10px" }} onClick={onMoveDown}>
+            <img
+              src={downArrow}
+              alt="Move Down"
+              style={{ width: "16px", height: "12px" }}
+            />
           </button>
         </>
       )}

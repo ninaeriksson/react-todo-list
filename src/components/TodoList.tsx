@@ -60,18 +60,40 @@ export default function TodoList() {
     );
   };
 
+  const moveUp = (index: number) => {
+    if (index === 0) return; // första kan inte flyttas upp
+    const newTodos = [...todos];
+    [newTodos[index - 1], newTodos[index]] = [
+      newTodos[index],
+      newTodos[index - 1],
+    ];
+    setTodos(newTodos);
+  };
+
+  const moveDown = (index: number) => {
+    if (index === todos.length - 1) return; // sista kan inte flyttas ner
+    const newTodos = [...todos];
+    [newTodos[index], newTodos[index + 1]] = [
+      newTodos[index + 1],
+      newTodos[index],
+    ];
+    setTodos(newTodos);
+  };
+
   return (
     <div className="todo-list-container">
       <h1>My Todo List</h1>
       <AddTodoForm onAdd={addTodo} />
       <ul>
-        {todos.map((todo) => (
+        {todos.map((todo, index) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             onToggle={() => toggleComplete(todo.id)}
             onRemove={() => removeTodo(todo.id)}
             onEdit={(newText) => editTodo(todo.id, newText)}
+            onMoveUp={() => moveUp(index)}
+            onMoveDown={() => moveDown(index)}
           />
         ))}
       </ul>
